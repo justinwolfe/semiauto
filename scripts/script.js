@@ -1,7 +1,7 @@
  var runtime = {
 	currentWord : "",
 	tokens: [],
-	choiceLength: 2, 
+	choiceLength: 3, 
 	randomChoiceAmount: 10,
 	suggestedChoiceAmount: 10,
 	fileInputs: [],
@@ -99,39 +99,44 @@ function switchScreen(){
 };
 
  function writingListener(){
-     $('#writingArea').on('click keypress', function(e) {
-		console.log("trigger")
+     $('#writingArea').on('click keyup', function(e) {
 		var stopCharacters = [' ', '\n', '\r', '\t']
         var areaText = $(this).val();
+		console.log(areaText);
         var wordStart = $(this)[0].selectionStart;
         var wordEnd = $(this)[0].selectionEnd;
-		console.log(e.type)
         while (wordStart > 0) {
             if (stopCharacters.indexOf(areaText[wordStart]) == -1) {
                 --wordStart;
             } else {
                 break;
             }                        
-        };
+        }
 		++wordStart
-        while (wordEnd < areaText.length) {
+        while (wordEnd <= areaText.length) {
             if (stopCharacters.indexOf(areaText[wordEnd]) == -1) {
                 ++wordEnd;
             } else {
                 break;
             }
         }
+		console.log(wordStart);
+		console.log(wordEnd);
 		if (wordStart == 1){wordStart = 0};
-        runtime.currentWord = areaText.substr(wordStart, wordEnd - wordStart);
+        runtime.currentWord = areaText.substr(wordStart, wordEnd - wordStart);	
+		if (wordStart == wordEnd + 1 && runtime.currentWord == ""){
+			runtime.currentWord = returnPrevWord();
+		}		
 		runtime.currentWord.replace(/['";:,.?]/g, '');
 		console.log(runtime.currentWord);
-        getChoices("suggested", runtime.currentWord);
+		if (runtime.currentWord != ""){
+			getChoices("suggested", runtime.currentWord);
+		}
 		getChoices("random");
     });
  };
  
  function getChoices(type, word){
-	console.log("geC");
 	var wordPositions = [];
 	var choices = []; 
 	if (type == "suggested"){
@@ -164,7 +169,6 @@ function switchScreen(){
 };
 
 function giveChoices(choices, container){
-	console.log("giC");
 	var choicesString = "";
 	if (container == "#suggestedChoices"){
 		for (i=0; i<runtime.suggestedChoiceAmount; i++){
@@ -179,3 +183,40 @@ function giveChoices(choices, container){
 	$(container).html("");
 	$(container).append(choicesString);
 };
+
+// from
+
+function GetCaretPosition(ctrl) {
+        var CaretPos = 0;   // IE Support
+        if (document.selection) {
+            ctrl.focus();
+            var Sel = document.selection.createRange();
+            Sel.moveStart('character', -ctrl.value.length);
+            CaretPos = Sel.text.length;
+        }
+        // Firefox support
+        else if (ctrl.selectionStart || ctrl.selectionStart == '0')
+            CaretPos = ctrl.selectionStart;
+        return (CaretPos);
+    }
+
+    function ReturnWord(text, caretPos) {
+        var index = text.indexOf(caretPos);
+        var preText = text.substring(0, caretPos);
+        if (preText.indexOf(" ") > 0) {
+            var words = preText.split(" ");
+            return words[words.length - 1]; //return last word
+        }
+        else {
+            return preText;
+        }
+    }
+
+    function returnPrevWord() {
+        var text = document.getElementById("textArea");
+        var caretPos = GetCaretPosition(text)
+        var word = ReturnWord(text.value, caretPos);
+        if (word != null) {
+            return word;
+        }
+    }
