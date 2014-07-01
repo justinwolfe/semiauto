@@ -7,7 +7,29 @@
  <title>ghostwriter</title>
  </head>  
  <body>
-	<textarea id="writingArea"></textarea>
-	<p>current word: <span id="current_word"></span></p>
+	<div id="inputScreen">
+		<div id="titleContainer">
+			<div id="title">title tk</div>
+		</div>
+		<div id="textInputContainer">
+			<textarea id="textInput"></textarea>
+		</div>
+		<div id="fileInputContainer"></div>
+		<div id="startButtonContainer">
+			<div id="startButton">go</div>
+		</div>
+	</div>	
+	<div id="writingScreen"> 
+		<textarea id="writingArea"></textarea>
+		<div id='choiceContainers'>
+			<div id='suggestedChoicesContainer' >
+				<ol id='suggestedChoices'></ol>
+			</div>
+			<div id='randomChoicesContainer'>
+				<ol id='randomChoices'></ol>
+			</div>
+			<br style="clear:both;"/>
+		</div>
+	</div>
  </body>                                                                 
  </html>
