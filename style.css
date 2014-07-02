@@ -1,9 +1,106 @@
 * {
    cursor: default;
-   margin: 0 auto; 
-   padding: 0; 
+   padding: 0;
+   margin: 0;
    -webkit-box-sizing: border-box;
    -moz-box-sizing: border-box;
    box-sizing: border-box;
+}
+
+textarea {
+	border-style: none; 
+    border-color: Transparent; 
+	outline: none;
+	resize: none;
+	overflow: auto;
+}
+
+#inputScreen {
+	width: 100%;
+	height: 100%;
+}
+
+#inputBody {
+	width: 50%;
+	margin: 0 auto;
+	font-family: helvetica;
+}
+
+#titleContainer{
+	margin-top: 20%;
+	text-align: center;
+	font-size: 4em;
+}
+
+.instruction {
+	font-size: 1.5em;
+	margin-top: 3%;
+	margin-bottom: 1.5%;
+}
+
+#fileInputContainer{
+	font-size: 1.5em;
+}
+
+#writingScreen {
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#startButton {
+	background-color: black;
+	color: white;
+	margin: 0 auto;
+	font-size: 4em;
+}
+
+.randomChoice{
+	margin-left: .5%;
+	margin-right: .5%;
+	outline: 1px solid black;
+	display: inline;
+}
+
+.suggestedChoice{
+	margin-left: .5%;
+	margin-right: .5%;
+	outline: 1px solid black;
+	background-color: white;
+	color: black;
+	display: inline;
+}
+
+#writingArea{
+	width: 100%;
+	height: 100%;
+	font-size: 1.5em;
+}	
+
+#writingContainer{
+	height: 79%;
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 1%;
+}
+
+#choiceContainers{
+	position: fixed;
+	outline: 1px solid gray;
+	top: 80%;
+	left: 0;
+	width: 100%;
+	height: 20%;
+}
+
+#suggestedChoicesContainer{
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+#randomChoicesContainer{
+	float: right;
+	width: 50%;
+	height: 100%;
 }
 

@@ -1,5 +1,5 @@
  var runtime = {
-	currentWord : "",
+	currentWord: "",
 	tokens: [],
 	choiceLength: 3, 
 	randomChoiceAmount: 10,
@@ -87,6 +87,7 @@ function processInputs(){
 	runtime.inputString = runtime.inputString.replace(/"/g, "");
 	runtime.inputString = runtime.inputString.replace(/(\r\n|\n|\r)/gm," ");
 	runtime.inputString = runtime.inputString.replace(/\s{2,}/g, " ");
+	runtime.inputString = runtime.inputString.replace(/[0-9]/g, '');
 	runtime.inputString = runtime.inputString.replace("  ", " ");
 	runtime.inputString = runtime.inputString.toLowerCase();
 	runtime.tokens = runtime.inputString.split(" "); 
@@ -184,7 +185,7 @@ function giveChoices(choices, container){
 	$(container).append(choicesString);
 };
 
-// from
+// from stack overflow site that i then lost the url for and should search for if i ever release this publicly
 
 function GetCaretPosition(ctrl) {
         var CaretPos = 0;   // IE Support

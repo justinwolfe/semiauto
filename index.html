@@ -8,25 +8,29 @@
  </head>  
  <body>
 	<div id="inputScreen">
-		<div id="titleContainer">
-			<div id="title">title tk</div>
-		</div>
-		<div id="textInputContainer">
-			<textarea id="textInput"></textarea>
-		</div>
-		<div id="fileInputContainer"></div>
-		<div id="startButtonContainer">
-			<div id="startButton">go</div>
+		<div id="inputBody">
+			<div id="titleContainer">semi-automatic writing</div>
+			<div id="instruction1" class="instruction">1. choose texts to draw from:</div>
+			<div id="fileInputContainer"></div>
+			<div id="instruction2" class="instruction">2. paste additional text to draw from:</div>
+			<div id="textInputContainer">
+				<textarea id="textInput"></textarea>
+			</div>
+			<div id="startButtonContainer">
+				<div id="startButton">start</div>
+			</div>
 		</div>
 	</div>	
 	<div id="writingScreen"> 
-		<textarea id="writingArea"></textarea>
+		<div id='writingContainer'>
+			<textarea spellcheck="false" id="writingArea"></textarea>
+		</div>
 		<div id='choiceContainers'>
 			<div id='suggestedChoicesContainer' >
-				<ol id='suggestedChoices'></ol>
+				<ul id='suggestedChoices'></ul>
 			</div>
 			<div id='randomChoicesContainer'>
-				<ol id='randomChoices'></ol>
+				<ul id='randomChoices'></ul>
 			</div>
 			<br style="clear:both;"/>
 		</div>
